@@ -12,10 +12,11 @@ class Model_LSTM_POS(nn.Module):
         self.dropout = nn.Dropout(dropout)
         bidirectional = 2 if bidirectional else 1
         self.fc = nn.Linear(bidirectional * hidden_size , output_size)
+        self.softmax = nn.Softmax(dim=-1)
 
     def forward(self, x):
         x = self.embedding(x)
         x = self.dropout(x)
         out, (hidden, _) = self.lstm(x)
         x = self.fc(out)
-        return nn.functional.log_softmax(x)
+        return self.softmax(x)
