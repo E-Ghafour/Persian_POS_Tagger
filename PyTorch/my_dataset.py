@@ -6,7 +6,7 @@ import numpy as np
 
 
 class Dataset_POS(Dataset):
-    def __init__(self, tokenize_data_path, pad_len, word2vec):
+    def __init__(self, tokenize_data_path, pad_len, word2vec, padded_x_path, padded_y_path, sents_num):
         self.pad_len = pad_len
         with open(tokenize_data_path, 'rb') as ff:
             sents = pickle.load(ff)
@@ -19,8 +19,20 @@ class Dataset_POS(Dataset):
         pad_label_one_hot = [0] * (self.num_labels + 1)
         pad_label_one_hot[-1] = 1
         self.pad_label_one_hot = pad_label_one_hot
-        self.padded_x = [self.convert_x(sent) for sent in tqdm(self.tokens[:sents_num])]
-        self.padded_y = [self.convert_y(label) for label in tqdm(self.labels[:sents_num])]
+
+        print('loading padded_x...')
+        with open(padded_x_path, 'rb') as ff:
+            self.padded_x = pickle.load(ff)
+        
+        print('loading padded_y...')
+        with open(padded_y_path, 'rb') as ff:
+            self.padded_y = pickle.load(ff)
+
+        self.padded_x = torch.tensor(self.padded_x)
+        self.padded_y = torch.tensor(self.padded_y)
+
+        # self.padded_x = torch.tensor([self.convert_x(sent) for sent in tqdm(self.tokens[:sents_num])])
+        # self.padded_y = torch.tensor([self.convert_y(label) for label in tqdm(self.labels[:sents_num])])
 
     def __len__(self):
         return len(self.tokens)
@@ -63,4 +75,4 @@ class Dataset_POS(Dataset):
         x = self.padded_x[idx]
         y = self.padded_y[idx]
 
-        return torch.tensor(x), torch.tensor(y).float()
+        return x, y.float()
