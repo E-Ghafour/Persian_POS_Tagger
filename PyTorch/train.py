@@ -146,7 +146,14 @@ def test_accuracy():
 
 
 
-
-
-
-
+best_acc = 0.95
+for epoch in range(100):
+    print(f'epoch: {epoch} of {epochs}')
+    train_epoch()
+    acc = test_accuracy()
+    print(f'the test accuracy: {acc}')
+    if(best_acc < acc):
+        print('saving_model...')
+        best_acc = acc
+        torch.save(model, 'best_acc.model')
+    print('------------------------------------------')
