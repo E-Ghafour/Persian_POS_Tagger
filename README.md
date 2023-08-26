@@ -1,2 +1,2 @@
 # Persian_POS_Tagger
-I implement POS Tagger models for Persian Language with some of the famous libraries, including: PyTorch, Spacy, python-crfsuite and python_crf and demonstrate their results.
+I have implemented POSTagger models for Persian Language with some of the famous libraries and various approaches, including: PyTorch, Spacy, python-crfsuite and average_perceptron.
