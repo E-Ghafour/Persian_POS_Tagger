@@ -6,6 +6,8 @@ This repository contains implementations of a Persian Part-of-Speech (POS) tagge
 
 Persian POS tagging is a crucial task in natural language processing for understanding the grammatical structure of Persian sentences. This repository provides multiple implementations of a Persian POS tagger using various approaches, allowing users to experiment with different models and select the one that best suits their needs.
 
+![sample output of POS Tagger](pos_tagger.png)
+
 ## Approaches
 
 ### 1. PyTorch-based POS Tagger
