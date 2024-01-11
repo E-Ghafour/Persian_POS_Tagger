@@ -1,6 +1,6 @@
 # Persian POS Tagger
 
-This repository contains implementations of a Persian Part-of-Speech (POS) tagger using different approaches. The implemented models include PyTorch-based model, SpaCy, Average Perceptron, and Python-crfsuite.
+This repository contains implementations of a Persian Part-of-Speech (POS) tagger using different approaches. The implemented models include PyTorch, TensorFlow, SpaCy, Average Perceptron and Python-crfsuite.
 
 ## Introduction
 
@@ -13,6 +13,9 @@ Persian POS tagging is a crucial task in natural language processing for underst
 ### 1. PyTorch-based POS Tagger
 
 The PyTorch-based POS tagger is implemented using a deep learning model built with PyTorch. It includes word embedding layer with LSTM for training to learn and predict POS tags for Persian words.
+
+### 1. Tensorflow-based POS Tagger
+The Tensor-flow-based POS tagger is implemented using three types of neural networks, including RNN, GRU, LSTM and all of them use a persian word embedding.
 
 ### 2. SpaCy POS Tagger
 
